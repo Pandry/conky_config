@@ -118,7 +118,7 @@ ${font Michroma:size=18}${goto 118}${color1}${voffset -4}${time %H}:${time %M}
 #${font Michroma:size=8}${color0}${goto 296}${voffset 18}BATTERY
 #${font Play:size=8}${color0}${goto 278}${voffset 5}${color1}${battery_percent BAT0}%
 ${font Michroma:size=8}${color0}${goto 170}${voffset -40}BATTERY
-${font Play:size=8}${color0}${goto 290}${voffset -15}${color1}${battery_percent BAT0}%
+${font Play:size=8}${color0}${goto 290}${voffset -15}${color1}${battery_percent}%
 
 
 # |--ETH0

@@ -70,6 +70,34 @@ bg_alpha=0.2
 settings_table = {
     
     {
+        name='downspeedf',
+        arg='',
+        max=2000,
+        bg_colour=bg_color,
+        bg_alpha=0.8,
+        fg_colour=def_color,
+        fg_alpha=0.8,
+        x=290, y=346,
+        radius=30,
+        thickness=12,
+        start_angle=180,
+        end_angle=420
+    },
+    {
+        name='upspeedf',
+        arg='',
+        max=200,
+        bg_colour=bg_color,
+        bg_alpha=0.6,
+        fg_colour=def_color,
+        fg_alpha=0.8,
+        x=290, y=346,
+        radius=18,
+        thickness=8,
+        start_angle=180,
+        end_angle=420
+    },
+    {
         name='acpitemp',
         arg='',
         max=110,
@@ -138,34 +166,6 @@ settings_table = {
         thickness=10,
         start_angle=0,
         end_angle=240
-    },
-    {
-        name='downspeedf',
-        arg='',
-        max=2000,
-        bg_colour=bg_color,
-        bg_alpha=0.8,
-        fg_colour=def_color,
-        fg_alpha=0.8,
-        x=290, y=346,
-        radius=30,
-        thickness=12,
-        start_angle=180,
-        end_angle=420
-    },
-    {
-        name='upspeedf',
-        arg='',
-        max=200,
-        bg_colour=bg_color,
-        bg_alpha=0.6,
-        fg_colour=def_color,
-        fg_alpha=0.8,
-        x=290, y=346,
-        radius=18,
-        thickness=8,
-        start_angle=180,
-        end_angle=420
     },
     {
         name='time',
@@ -276,15 +276,18 @@ function conky_ring_stats()
 	local function setup_rings(cr,pt)
 		local str=''
 		local value=0
-		
+        
 		str=string.format('${%s %s}',pt['name'],pt['arg'])
 		str=conky_parse(str)
-		
+        
+        print(pt['name'], pt['arg'])
+
 		value=tonumber(str)
-		if value == nil then value = 0 end
-		pct=value/pt['max']
-		
-		draw_ring(cr,pct,pt)
+        if value == nil then value = 0 end
+        
+        pct=value/pt['max']
+        
+        draw_ring(cr,pct,pt)
 	end
 
 	if conky_window==nil then return end
@@ -295,12 +298,13 @@ function conky_ring_stats()
 	local updates=conky_parse('${updates}')
 	update_num=tonumber(updates)
 
-	if update_num>5 then
+	--if update_num>5 then
 	    for i in pairs(settings_table) do
                 display_temp=temp_watch()
-		setup_rings(cr,settings_table[i])
+                setup_rings(cr,settings_table[i])
+
 	    end
-	end
+	--end
    cairo_surface_destroy(cs)
   cairo_destroy(cr)
 end
@@ -365,10 +369,10 @@ end
 -- Contrôle de l'interface active
 function iface_watch()
 
-    iface=conky_parse("${if_existing /proc/net/route enp0s31f6}enp0s31f61${else}wlp1s0${endif}")
+    iface=conky_parse("${if_existing /proc/net/route enp0s31f6}enp0s31f61${else}${if_existing /proc/net/route wlp1s0}wlp1s0${else} ${end}")
 
-    settings_table[11]['arg']=iface
-    settings_table[12]['arg']=iface
+    settings_table[1]['arg']=iface
+    settings_table[2]['arg']=iface
 end
 
 
