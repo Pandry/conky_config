@@ -104,7 +104,7 @@ ${font Play:normal:size=7}${voffset 4}${goto 348}${color1}RAM ${alignr 40}${colo
 ${font Play:normal:size=7}${goto 120}${voffset -33}Root${color1}${alignr 
 310}${fs_used /} / ${fs_size /}
 ##${font Michroma:size=10}${color0}${goto 66}${voffset 10}HARD  DRIVE
-${font Michroma:size=10}${color0}${goto 200}${voffset 60}SSD 
+${font Michroma:size=10}${color0}${goto 200}${voffset 20}SSD 
 ${font Michroma:size=10}${color0}${voffset 26}${goto 324}INTERNET  INFO
 # EDITION FINIR WLAN
 ###${if_existing /proc/net/route wlp1s0}${font Play:normal:size=7}${color1}${alignr 54}${v2offset -8}Wi-Fi  ${color1}${wireless_essid wlp1s0}
