@@ -8,4 +8,4 @@ This was not even supposed to use git
 So take it as it is :3
 
 # Screenshot
-![](https://vgy.me/TrXjDA.png)
+![](https://vgy.me/JdUzxE.png)
